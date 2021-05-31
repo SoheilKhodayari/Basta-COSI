@@ -50,6 +50,7 @@ An example configuration is as follow:
 - **browser**: the browser used for this test. Currently, options are `chrome`, `firefox` and `edge`. See section *Selenium Webdrivers* to add support for other browsers!
 - **platform**: the current platform in use. It specifies which browser drivers to use. Options are `win32` for Windows and `macos` for MaxOs.
 - **states-script**: the name of the selenium state script file to be used for the site(s) specfied in `local_settings.py`.
+
 **NOTE:** Each state script for a site with id=**x** is located under `automator\x\Scripts\ScriptName.py`
 
 Once you set this, an auto-generated LOCK file will be created in the main automator directory under the name `auto-generated-config.json` upon running the tool.
@@ -105,6 +106,7 @@ If executed successfully, the test server is accessible on "http://127.0.0.1:900
 The number 1234 is currently the default application port number for the log server. If executed successfully, the log server is accessible on "http://127.0.0.1:1234". You may pass anoher port number depending on your *app environment configuration*.
 
 **Step 3**— Navigate to the root of the `automator` directory:
+
 **3.1. URL Crawling:** (If needed) Crawl the urls for a given website by running `python crawler_find_urls.py <site-id>` where `<site-id>` is an integer representing the site identifier in the settings.
 
 **3.2. Collect HTTP Responses:** (If needed) Run the function `main_crawl_url_response_headers(siteId)` in `automator\crawler_and_avi.py`. Specify the correct siteId and browsers. This will open up a browser, do sample inclusions (generate candidate pages by test server), and collect the HTTP traffic.

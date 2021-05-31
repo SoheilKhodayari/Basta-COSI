@@ -1,12 +1,15 @@
 # Basta-COSI: Cross-Origin State Inference Testing 
 [![Build Status](https://travis-ci.org/boennemann/badges.svg?branch=master)](https://travis-ci.org/boennemann/badges) [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0) [![Platform](https://img.shields.io/badge/platform-windows%20%7C%20macos%20%7C%20linux-lightgrey.svg)](https://img.shields.io/badge/platform-windows%20%7C%20macos%20%7C%20linux-lightgrey.svg) [![Node](https://img.shields.io/badge/node%40latest-%3E%3D%206.0.0-brightgreen.svg)](https://img.shields.io/badge/node%40latest-%3E%3D%206.0.0-brightgreen.svg) [![Django Version](https://img.shields.io/pypi/djversions/djangorestframework.svg)](https://img.shields.io/pypi/djversions/djangorestframework.svg)
 
-Basta-COSI is a comprehensive framework for the automated detection of [COSI](https://publications.cispa.saarland/3329/1/COSI.pdf) vulnerabilities / [XS-Leaks](https://xsleaks.com/). This repository contains the code for the [NDSS'20 paper: "Cross-Origin State Inference (COSI) Attacks: Leaking Web Site States through XS-Leaks"](https://publications.cispa.saarland/3329/1/COSI.pdf). 
+Basta-COSI is a comprehensive framework for the automated detection of [COSI](https://publications.cispa.saarland/3329/1/COSI.pdf) vulnerabilities / [XS-Leaks](https://xsleaks.com/). This repository contains the code for the [NDSS'20 paper: "Cross-Origin State Inference (COSI) Attacks: Leaking Web Site States through XS-Leaks"](https://publications.cispa.saarland/3329/1/COSI.pdf).
+ 
 Please note that in its current state, the code in this repository is a PoC and not a fully-fledged production-ready tool. However, part of the Basta-COSI is also integrated with the open-source [ElasTest Security Service (ESS)](https://github.com/elastest/elastest-security-service) platform. For more information, please see [here](https://elastest.eu/).
 
 ## Installation
 To start using this tool, follow the steps below:
+
 **Step 0: Prerequisites**— This project assumes you have `Python 2.7.5`, `pip` package manager and the [ZAP spider](https://www.zaproxy.org/) Installed.
+
 **Step 1:  Python Dependencies**— In the root project directory, run following command to install the necessary Python dependencies.
 ```sh
 $ pip install -r requirements.txt

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Parent Page</title>
+</head>
+<body>
+	<div id='container'>
+		<h1>Parent Attaker Page</h1>
+	</div>
+	<hr/>
+
+	<div id='frame-container'>
+		<iframe id="targetIFrame" src="{{ siteurl }}" target="_top" style="height:380px;width:100%"></iframe>
+
+	</div>
+</body>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+	window.addEventListener('message', function(event){
+		console.log("recived: "+ event.data);
+		console.log("origin: " + event.origin);
+	});
+
+</script>         
+
+</html>

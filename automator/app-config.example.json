@@ -1,0 +1,8 @@
+{
+	"log-server-endpoint": "http://127.0.0.1:1234",
+	"test-server-endpoint": "http://127.0.0.1:8000",
+	"zap-api-key": "6g607t3sik9balv4hge6krpis7",
+	"browser": "chrome",
+	"platform": "win32",
+	"states-script": "FreeNPremium"
+}

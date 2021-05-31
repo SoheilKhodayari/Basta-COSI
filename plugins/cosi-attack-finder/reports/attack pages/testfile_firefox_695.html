@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>COSI Attack Web Page</title>
+                                     <script>
+                                     flag="False"
+                                     window.onload = function() {
+                                      setTimeout(function(){
+                                                           if (flag!="True") {
+                                                             send_properties()
+                                                           }
+                                                         }, 5000);
+                                     };
+                                     function send_properties(){
+                                     properties=["contentDocument","contentWindow","form","validationMessage","validity","willValidate",]
+                                       properties_values={}
+                                       for (var i = 0; i < properties.length; i++) {
+                                         var property={}
+                                         eval('property["'+properties[i]+'"]=document.getElementById("inclusion").'+properties[i]);
+                                         if (typeof property[properties[i]] === "undefined") {
+
+                                           property[properties[i]]="undefined"
+
+                                           send_property(property)
+                                         }
+                                         else if (property[properties[i]]==null) {
+                                           send_property(property)
+                                         }
+                                         else {
+                                           try{
+                                                  send_property(property)
+                                              }
+                                           catch(exception){
+
+                                                  var temp_property={}
+                                                  temp_property[properties[i]]="ExceptionHappened"
+                                                  send_property(temp_property)
+                                               }
+                                         }
+                                       }
+                                     }
+                                     function send_property(prop){
+                                       var xhr = new XMLHttpRequest();
+                                       xhr.withCredentials = true;
+                                       xhr.open("POST", "http://localhost:6062/sendproperties/", true);
+                                       xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                                       xhr.onreadystatechange = function() {
+                                                                               //Call a function when the state changes.
+                                                                               if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
+                                                                                       console.log("Tag Properties Request sent");
+                                                                               }
+                                                                           }
+                                       xhr.send(JSON.stringify(prop));
+
+                                     }
+                                     function send_events(evnt){
+                                         flag="True"
+                                         var xhr = new XMLHttpRequest();
+                                         xhr.withCredentials = true;
+                                         xhr.open("POST", "http://localhost:6062/sendevents/", true);
+                                         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                                         xhr.onreadystatechange = function() {
+                                                                                 //Call a function when the state changes.
+                                                                                 if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
+                                                                                         console.log("Event Fire Request sent");
+                                                                                 }
+                                                                             }
+                                         triggered_event={}
+                                         triggered_event["event"]=evnt;
+                                         xhr.send(JSON.stringify(triggered_event));
+                                         send_properties()
+                                     }
+                                     </script>
+                                     
+</head>
+<body><object id="inclusion" data="http://localhost:9090/test?resstat=503&cto=disabled&resfiletype=file.js&xfo=disabled&contdisp=attachment"  onauxclick="send_events('onauxclick')" onmouseover="send_events('onmouseover')" onkeydown="send_events('onkeydown')" ontimeupdate="send_events('ontimeupdate')" onlanguagechange="send_events('onlanguagechange')" onpause="send_events('onpause')" oncanplay="send_events('oncanplay')" onmouseout="send_events('onmouseout')" ondragexit="send_events('ondragexit')" onprogress="send_events('onprogress')" onloadedmetadata="send_events('onloadedmetadata')" onload="send_events('onload')" onratechange="send_events('onratechange')" onreset="send_events('onreset')" onrejectionhandled="send_events('onrejectionhandled')" ondragstart="send_events('ondragstart')" onselect="send_events('onselect')" onkeypress="send_events('onkeypress')" onplaying="send_events('onplaying')" onwaiting="send_events('onwaiting')" oncontextmenu="send_events('oncontextmenu')" onkeyup="send_events('onkeyup')" onemptied="send_events('onemptied')" onoffline="send_events('onoffline')" onmousemove="send_events('onmousemove')" onerror="send_events('onerror')" onloadend="send_events('onloadend')" onpageshow="send_events('onpageshow')" onsubmit="send_events('onsubmit')" oncancel="send_events('oncancel')" ontoggle="send_events('ontoggle')" oncopy="send_events('oncopy')" onbeforeunload="send_events('onbeforeunload')" onunhandledrejection="send_events('onunhandledrejection')" onseeked="send_events('onseeked')" onunload="send_events('onunload')" onpagehide="send_events('onpagehide')" oncanplaythrough="send_events('oncanplaythrough')" oncuechange="send_events('oncuechange')" onstalled="send_events('onstalled')" onmousedown="send_events('onmousedown')" onbeforeprint="send_events('onbeforeprint')" onresize="send_events('onresize')" onwheel="send_events('onwheel')" ondragend="send_events('ondragend')" onformdata="send_events('onformdata')" ondragleave="send_events('ondragleave')" onpopstate="send_events('onpopstate')" onmouseleave="send_events('onmouseleave')" onchange="send_events('onchange')" onloadstart="send_events('onloadstart')" onmessage="send_events('onmessage')" ondrop="send_events('ondrop')" onmouseenter="send_events('onmouseenter')" ondblclick="send_events('ondblclick')" onscroll="send_events('onscroll')" onfocus="send_events('onfocus')" onseeking="send_events('onseeking')" onsecuritypolicyviolation="send_events('onsecuritypolicyviolation')" oninput="send_events('oninput')" onstorage="send_events('onstorage')" ondragenter="send_events('ondragenter')" onafterprint="send_events('onafterprint')" onpaste="send_events('onpaste')" ondragover="send_events('ondragover')" onclick="send_events('onclick')" ondrag="send_events('ondrag')" onmessageerror="send_events('onmessageerror')" onsuspend="send_events('onsuspend')" ononline="send_events('ononline')" onhashchange="send_events('onhashchange')" onended="send_events('onended')" oncut="send_events('oncut')" onabort="send_events('onabort')" onmouseup="send_events('onmouseup')" onclose="send_events('onclose')" onblur="send_events('onblur')" onplay="send_events('onplay')" onvolumechange="send_events('onvolumechange')" oninvalid="send_events('oninvalid')" onloadeddata="send_events('onloadeddata')" ondurationchange="send_events('ondurationchange')"></object>
+</body>
+</html>

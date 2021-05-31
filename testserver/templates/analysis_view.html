@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Analysis</title>
+  <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<div id="wrapper">
+  <h1>Analysis Results: {{ timestamp }}</h1>
+  
+  <table class="table table-striped table-bordered table-hover table-responsive">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"> URL</th>
+        <th scope="col"> LTM</th>
+        <th scope="col"> NTM</th>
+        <th scope="col"> ACBTM</th>
+        <th scope="col"> LTDO</th>
+        <th scope="col"> NTDO</th>
+        <th scope="col"> ACBTDO</th>
+        <th scope="col"> LDMD</th>
+        <th scope="col"> NDMD</th>
+        <th scope="col"> ACBD</th>
+        <th scope="col"> MO</th>
+        <th scope="col"> PMO</th>
+        <th scope="col"> ACBO</th>
+         <th scope="col"> LFR</th>
+        <th scope="col"> NFR</th>
+        <th scope="col"> FRCA</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in analysis_data %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ item.0 }}</td>
+        <td>{{ item.1 }}</td>
+        <td>{{ item.2 }}</td>
+
+        {% if item.3 == 0 %}
+        <td class="bg-info">{{ item.3 }}</td>
+        {% else %}
+        <td class="bg-warning">{{ item.3 }}</td>
+        {% endif %}
+
+        <td>{{ item.4 }}</td>
+        <td>{{ item.5 }}</td>
+
+        {% if item.6 == 0 %}
+        <td class="bg-info">{{ item.6 }}</td>
+        {% else %}
+        <td class="bg-warning">{{ item.6 }}</td>
+        {% endif %}
+
+        <td>{{ item.7 }}</td>
+        <td>{{ item.8 }}</td>
+
+        {% if item.9 == 0 %}
+        <td class="bg-info">{{ item.9 }}</td>
+        {% else %}
+        <td class="bg-warning">{{ item.9 }}</td>
+        {% endif %}
+
+        <td>{{ item.10}}</td>
+        <td>{{ item.11}}</td>  
+
+        {% if item.12 == 0 %}
+        <td class="bg-info">{{ item.12 }}</td>
+        {% else %}
+        <td class="bg-warning">{{ item.12 }}</td>
+        {% endif %}
+
+        <td>{{ item.13 }}</td>
+        <td>{{ item.14 }}</td>
+        <td>{{ item.15 }}</td>
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+
+  <div style="margin-left: 50px;">
+    <br/>
+     <p>  <b> LTM: </b> Logged in - total number of messages     </p>   
+     <p>  <b> NTM: </b> Logged out - total number of messages     </p>     
+     <p>  <b> ACBTM:</b>  Attack candidate because of total messages   </p>        
+     <p>  <b> LTDO:</b>  Logged in - total number of different origins    </p>   
+     <p>  <b> NTDO:</b>  Logged out - total number of different origins     </p>      
+     <p>  <b> ACBTDO</b> Attack candidate because of total number of different origins   </p>           
+     <p>  <b> LDMD:</b>  Logged in - different message data  </p>       
+     <p>  <b> NDMD:</b>  Logged out - different message data   </p>         
+     <p>  <b> ACBD:</b>  Attack candidate because of message data    </p>         
+     <p>  <b> MO: </b> Message origin if message data is same      </p>     
+     <p>  <b> PMO: </b> message origin of paired data if message data is same     </p>         
+     <p>  <b> ACBO:</b>  Attack candidate because of origin</p>
+  <br/>
+ </div> 
+
+</body>
+</html>
+

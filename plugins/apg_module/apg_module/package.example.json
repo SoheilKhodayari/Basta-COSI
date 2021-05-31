@@ -1,0 +1,19 @@
+{
+  "name": "report-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server_program.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www"
+  },
+  "author": "",
+  "license": "ISC"
+}

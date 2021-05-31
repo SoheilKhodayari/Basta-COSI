@@ -1,0 +1,9 @@
+status: 301
+content-length: 0
+content-location: http://mxr.mozilla.org/mozilla-central/source/netwerk/dns/effective_tld_names.dat?raw=1
+connection: Keep-Alive
+location: https://mxr.mozilla.org/mozilla-central/source/netwerk/dns/effective_tld_names.dat?raw=1
+date: Wed, 19 Dec 2018 20:24:44 GMT
+-x-permanent-redirect-url: https://mxr.mozilla.org/mozilla-central/source/netwerk/dns/effective_tld_names.dat?raw=1
+content-type: text/html
+

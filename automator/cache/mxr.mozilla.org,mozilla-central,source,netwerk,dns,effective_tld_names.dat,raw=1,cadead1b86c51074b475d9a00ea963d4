@@ -1,0 +1,9 @@
+status: 301
+content-length: 0
+content-location: https://mxr.mozilla.org/mozilla-central/source/netwerk/dns/effective_tld_names.dat?raw=1
+connection: Keep-Alive
+location: https://publicsuffix.org/list/effective_tld_names.dat
+date: Wed, 19 Dec 2018 20:24:45 GMT
+-x-permanent-redirect-url: https://publicsuffix.org/list/effective_tld_names.dat
+content-type: text/html
+

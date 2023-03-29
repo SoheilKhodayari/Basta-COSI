@@ -88,10 +88,11 @@ In order to run and use the tool, take note of the followings:
 
 ### Customize What Would Run 
 **which tests?**— Open the application main file located on `automator/main.py` and navigate down to the 'main' function, through which you can specify which test shall run by calling the respective test function.
-**which sites?**— Rename the `local_settings.example.py` file under the `testserver/main` directory to `local_settings.py`, and add site entries to the `site_dict` dictionary. For example, for testing 'https://www.google.com', following is an example entry:
+
+**which sites?**— Rename the `local_settings.example.py` file under the `testserver/main` directory to `local_settings.py`, and add site entries to the `site_dict` dictionary. For example, for testing 'https://www.example.org', following is an example entry:
 ```
 site_dict = {
-        '1': ('https://www.google.com', 'google'),
+        '1': ('https://www.example.org', 'example-name'),
 }
 ```
 Having this example config, test results would be stored under `automator\1` where `1` is the id of the site in the given dictionary.
